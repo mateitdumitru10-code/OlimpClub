@@ -13,6 +13,7 @@
       <div id="nav-menu">
         <ul class="nav-menu">
           <li><a href="./index.html">Acasă</a></li>
+          <li><a href="./cursuri.html">Cursuri</a></li>
           <li><a href="./profesori.html">Profesori</a></li>
           <li><a href="./#recenzii">Recenzii</a></li>
           <li><a href="./contact.html">Contact</a></li>
@@ -22,7 +23,7 @@
 
     <main>
       <section id="contact">
-        <h2>Contact</h2>
+        <h2>Contactează-ne</h2>
         <form id="contact-form">
           <div>
             <label for="nume">Nume:</label>
@@ -31,6 +32,18 @@
               id="nume"
               name="nume"
               placeholder="Numele Dvs."
+              required
+            />
+          </div>
+          <div>
+            <label for="telefon">Telefon:</label>
+            <input
+              type="tel"
+              id="telefon"
+              name="telefon"
+              placeholder="Numărul Dvs. de telefon"
+              pattern="[0-9]{10}"
+              title="Vă rugăm să introduceți un număr de telefon valid (ex: 0722123456)"
               required
             />
           </div>

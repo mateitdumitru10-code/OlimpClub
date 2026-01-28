@@ -8,7 +8,7 @@ body {
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #fcfaf2;
-  color: #2d2d2d;
+  color: #333333; /* Dark Gray for main body text */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -48,6 +48,7 @@ h1 {
   letter-spacing: 1px;
   text-transform: uppercase;
   font-size: 1.8rem;
+  color: #ffffff; /* Logo stays white */
   transition:
     color 0.3s ease,
     font-size 0.3s ease;
@@ -73,10 +74,9 @@ h1:hover {
   font-size: 2.2rem;
   cursor: pointer;
   z-index: 1000;
-  transition: top 0.3s ease; /* Transition for movement */
+  transition: top 0.3s ease;
 }
 
-/* ADJUSTED: Moves the ☰ even higher when shrunk */
 header.shrunk #nav-toggle {
   top: 0.2rem;
 }
@@ -138,17 +138,28 @@ main {
   box-sizing: border-box;
 }
 
+/* Base section style without static border color */
 section {
   background-color: #ffffff;
   margin-bottom: 2rem;
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  border-top: 5px solid #ffb81c;
+  border-top: 5px solid transparent;
+}
+
+/* Odd sections (1st, 3rd, 5th) -> Burgundy */
+section:nth-of-type(even) {
+  border-top-color: #b03a2e;
+}
+
+/* Even sections (2nd, 4th, 6th) -> Gold */
+section:nth-of-type(odd) {
+  border-top-color: #ffb81c;
 }
 
 section h2 {
-  color: #1a4a7a;
+  color: #333333; /* Dark Gray titles */
   margin-top: 0;
 }
 
@@ -170,6 +181,7 @@ section h2 {
   border-left: 6px solid #1a4a7a;
   padding: 2rem;
   font-style: italic;
+  color: #444444; /* Dark Gray */
   border-radius: 0 8px 8px 0;
   animation: fadeEffect 0.5s ease-in;
 }
@@ -228,8 +240,12 @@ article.profesor {
 }
 
 article.profesor h3 {
-  color: #1a4a7a;
+  color: #333333;
   margin-top: 1rem;
+}
+
+article.profesor p {
+  color: #555555;
 }
 
 article.profesor img,
@@ -258,7 +274,7 @@ article.profesor svg {
   display: block;
   margin-bottom: 0.4rem;
   font-weight: 600;
-  color: #555;
+  color: #444444;
 }
 
 #contact-form input,
@@ -276,6 +292,7 @@ article.profesor svg {
 #contact-form textarea {
   border: 1px solid #ddd;
   background-color: #fdfdfd;
+  color: #333333;
 }
 
 #contact-form input:focus,
@@ -344,4 +361,24 @@ footer {
     flex-direction: column;
     align-items: center;
   }
+}
+
+/* Specific styling for the Courses page */
+.curs-tip {
+  border-left: 6px solid #1a4a7a;
+  color: #444444;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.curs-tip:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.curs-tip h3 {
+  color: #333333;
+  margin-top: 0;
 }
