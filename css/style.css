@@ -7,24 +7,39 @@ body {
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #fcfaf2; /* Warm Off-White / Cream */
+  background-color: #fcfaf2;
   color: #2d2d2d;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  padding-top: 85px;
 }
 
-/* 2. THEMED HEADER (ROMANIAN BLUE - DEEP SKY) */
+/* 2. THEMED HEADER - STICKY & SHRINKING */
 header {
-  background-color: #1a4a7a; /* Deep, Warm Navy Blue */
+  background-color: #1a4a7a;
   color: #ffffff;
   padding: 1.5rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 2000;
   flex-shrink: 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition:
+    padding 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+header.shrunk {
+  padding: 0.7rem 2rem;
+  background-color: rgba(26, 74, 122, 0.98);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
@@ -33,6 +48,17 @@ h1 {
   letter-spacing: 1px;
   text-transform: uppercase;
   font-size: 1.8rem;
+  transition:
+    color 0.3s ease,
+    font-size 0.3s ease;
+}
+
+header.shrunk h1 {
+  font-size: 1.4rem;
+}
+
+h1:hover {
+  color: #ffb81c;
 }
 
 /* 3. NAVIGATION & MENU */
@@ -43,20 +69,25 @@ h1 {
   right: 1.5rem;
   background: none;
   border: none;
-  color: #ffb81c; /* Golden toggle button */
+  color: #ffb81c;
   font-size: 2.2rem;
   cursor: pointer;
   z-index: 1000;
+  transition: top 0.3s ease; /* Transition for movement */
+}
+
+/* ADJUSTED: Moves the ☰ even higher when shrunk */
+header.shrunk #nav-toggle {
+  top: 0.2rem;
 }
 
 #nav-menu {
   display: none;
   position: absolute;
-  top: 5.5rem;
+  top: 100%;
   right: 0;
   background-color: #1a4a7a;
   width: 100%;
-  /* Removed horizontal padding to allow perfect centering */
   padding: 1.5rem 0;
   z-index: 999;
   box-sizing: border-box;
@@ -70,18 +101,18 @@ h1 {
 
 .nav-menu {
   list-style: none;
-  padding: 0; /* Reset default browser padding */
+  padding: 0;
   margin: 0;
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centers the list items horizontally on mobile */
+  align-items: center;
 }
 
 .nav-menu li {
   margin-bottom: 1.5rem;
   text-align: center;
-  width: 100%; /* Ensures the hit area is centered */
+  width: 100%;
 }
 
 .nav-menu a {
@@ -94,7 +125,7 @@ h1 {
 }
 
 .nav-menu a:hover {
-  color: #ffb81c; /* Warm Yellow hover */
+  color: #ffb81c;
 }
 
 /* 4. MAIN CONTENT AREA */
@@ -113,10 +144,14 @@ section {
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  border-top: 5px solid #ffb81c; /* Golden accent */
+  border-top: 5px solid #ffb81c;
 }
 
-/* Specific Section Colors */
+section h2 {
+  color: #1a4a7a;
+  margin-top: 0;
+}
+
 #profesori {
   background-color: #fffef2;
 }
@@ -127,11 +162,6 @@ section {
   min-height: 150px;
   width: 100%;
   margin-bottom: 1rem;
-}
-
-.slides-wrapper {
-  position: relative;
-  width: 100%;
 }
 
 .recenzie {
@@ -286,7 +316,6 @@ footer {
   #nav-toggle {
     display: none;
   }
-
   #nav-menu {
     display: block;
     position: static;
@@ -294,16 +323,13 @@ footer {
     background-color: transparent;
     padding: 0;
   }
-
   #nav-menu.nav-menu-active {
     border-top: none;
   }
-
   .nav-menu {
-    flex-direction: row; /* Horizontal layout for desktop */
+    flex-direction: row;
     align-items: center;
   }
-
   .nav-menu li {
     display: inline-block;
     margin: 0 1.2rem;

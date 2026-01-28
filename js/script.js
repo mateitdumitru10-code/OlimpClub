@@ -1,14 +1,36 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // --- Header Shrink Logic ---
+  const header = document.querySelector("header");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      header.classList.add("shrunk");
+    } else {
+      header.classList.remove("shrunk");
+    }
+  });
+
+  // --- H1 Logo Click ---
   const logoTitle = document.querySelector("header h1");
   if (logoTitle) {
-    logoTitle.style.cursor = "pointer"; // Make it look like a link
+    logoTitle.style.cursor = "pointer";
     logoTitle.addEventListener("click", () => {
       window.location.href = "index.html";
     });
   }
 
-  const contactForm = document.getElementById("contact-form");
+  // --- Mobile Menu Toggle ---
+  const navToggle = document.getElementById("nav-toggle");
+  const navMenu = document.getElementById("nav-menu");
 
+  if (navToggle && navMenu) {
+    navToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("nav-menu-active");
+    });
+  }
+
+  // --- Contact Form Handling ---
+  const contactForm = document.getElementById("contact-form");
   if (contactForm) {
     contactForm.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -26,45 +48,38 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Mobile Menu Toggle ---
-  const navToggle = document.getElementById("nav-toggle");
-  const navMenu = document.getElementById("nav-menu");
-
-  navToggle.addEventListener("click", () => {
-    navMenu.classList.toggle("nav-menu-active");
-  });
-
   // --- Slideshow Logic ---
   let currentSlide = 0;
   const slides = document.querySelectorAll(".recenzie");
   const nextBtn = document.getElementById("next-slide");
   const prevBtn = document.getElementById("prev-slide");
 
-  function showSlide(index) {
-    // Remove active class from all slides
-    slides.forEach((slide) => slide.classList.remove("active"));
+  if (slides.length > 0) {
+    function showSlide(index) {
+      slides.forEach((slide) => slide.classList.remove("active"));
+      if (index >= slides.length) currentSlide = 0;
+      if (index < 0) currentSlide = slides.length - 1;
+      slides[currentSlide].classList.add("active");
+    }
 
-    // Handle wrap-around
-    if (index >= slides.length) currentSlide = 0;
-    if (index < 0) currentSlide = slides.length - 1;
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        currentSlide++;
+        showSlide(currentSlide);
+      });
+    }
 
-    // Add active class to current slide
-    slides[currentSlide].classList.add("active");
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        currentSlide--;
+        showSlide(currentSlide);
+      });
+    }
+
+    // Auto-rotate slides
+    setInterval(() => {
+      currentSlide++;
+      showSlide(currentSlide);
+    }, 5000);
   }
-
-  nextBtn.addEventListener("click", () => {
-    currentSlide++;
-    showSlide(currentSlide);
-  });
-
-  prevBtn.addEventListener("click", () => {
-    currentSlide--;
-    showSlide(currentSlide);
-  });
-
-  // Optional: Auto-play every 5 seconds
-  setInterval(() => {
-    currentSlide++;
-    showSlide(currentSlide);
-  }, 5000);
 });
