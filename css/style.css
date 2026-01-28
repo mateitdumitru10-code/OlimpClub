@@ -1,4 +1,17 @@
 /* 1. LAYOUT & STICKY FOOTER LOGIC */
+
+/* Hide scrollbar for Chrome, Safari and Edge on Desktop */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ensure scrolling still works */
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  overflow-y: scroll; /* Keeps the ability to scroll */
+}
+
 html,
 body {
   height: 100%;
@@ -148,19 +161,35 @@ section {
   border-top: 5px solid transparent;
 }
 
-/* Odd sections (1st, 3rd, 5th) -> Burgundy */
+/* Alternating Border Colors */
 section:nth-of-type(even) {
-  border-top-color: #b03a2e;
+  border-top-color: #b03a2e; /* Burgundy */
 }
 
-/* Even sections (2nd, 4th, 6th) -> Gold */
 section:nth-of-type(odd) {
-  border-top-color: #ffb81c;
+  border-top-color: #ffb81c; /* Gold */
 }
 
 section h2 {
-  color: #333333; /* Dark Gray titles */
+  color: #333333;
   margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+/* Contact Info Styling */
+.contact-item {
+  margin-bottom: 1.5rem;
+}
+
+.contact-item h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+  color: #1a4a7a;
+}
+
+.contact-item p {
+  margin: 0;
+  color: #555555;
 }
 
 #profesori {
@@ -181,7 +210,7 @@ section h2 {
   border-left: 6px solid #1a4a7a;
   padding: 2rem;
   font-style: italic;
-  color: #444444; /* Dark Gray */
+  color: #444444;
   border-radius: 0 8px 8px 0;
   animation: fadeEffect 0.5s ease-in;
 }
@@ -381,4 +410,121 @@ footer {
 .curs-tip h3 {
   color: #333333;
   margin-top: 0;
+}
+
+.curs-detalii {
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    max-height 0s ease-out,
+    padding 0.2s ease;
+  opacity: 0;
+}
+
+.curs-tip.active .curs-detalii {
+  max-height: 500px; /* Suficient pentru textul adițional */
+  opacity: 1;
+  padding-top: 10px;
+  border-top: 1px dashed #ddd; /* Separator discret între scurtă descriere și detalii */
+  margin-top: 10px;
+}
+
+/* Indicator vizual pentru dropdown */
+.curs-tip h3::after {
+  content: " ▼";
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.curs-tip.active h3::after {
+  transform: rotate(180deg);
+}
+
+/* Stiluri pentru Secțiunea Clickabilă Cursuri */
+.clickable-section {
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  position: relative;
+}
+
+.clickable-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cta-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: 700;
+  color: #1a4a7a; /* Albastru original */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+.clickable-section:hover .cta-link {
+  color: #b03a2e; /* Schimbă în Burgund la hover */
+}
+
+/* --- 7. SLIDESHOW PROFESORI (COMPLET) --- */
+#profesori-preview {
+  text-align: center;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto 5rem auto; /* 5rem distanță față de recenzii */
+  box-sizing: border-box;
+}
+
+.slideshow-container-profesori {
+  position: relative;
+  width: 100%;
+  margin: 1rem auto;
+  overflow: hidden;
+  min-height: 280px;
+}
+
+.slides-wrapper-profesori {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.profesor-slide {
+  flex: 0 0 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.profesor-slide.active {
+  display: flex;
+  animation: fadeEffect 0.5s ease-in-out;
+}
+
+.profesor-slide img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #ffb81c;
+  padding: 5px;
+  background-color: #ffffff;
+  margin: 0 auto 1rem auto;
+  display: block;
+}
+
+/* RESPONSIV: Desktop (3 profesori) */
+@media (min-width: 769px) {
+  .profesor-slide {
+    flex: 0 0 33.333%;
+    display: flex; /* Afișează 3 pe desktop */
+  }
 }
