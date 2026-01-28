@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const logoTitle = document.querySelector("header h1");
+  if (logoTitle) {
+    logoTitle.style.cursor = "pointer"; // Make it look like a link
+    logoTitle.addEventListener("click", () => {
+      window.location.href = "index.html";
+    });
+  }
+
   const contactForm = document.getElementById("contact-form");
 
   if (contactForm) {
