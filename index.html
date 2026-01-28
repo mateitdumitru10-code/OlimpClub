@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OlimpClub - Acasă</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>OlimpClub</h1>
+      <button id="nav-toggle" aria-label="Deschide meniul">☰</button>
+      <div id="nav-menu">
+        <ul class="nav-menu">
+          <li><a href="./index.html">Acasă</a></li>
+          <li><a href="./profesori.html">Profesori</a></li>
+          <li><a href="./#recenzii">Recenzii</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <section id="despre">
+        <h2>Despre Noi</h2>
+        <p>Informații despre OlimpClub.</p>
+      </section>
+
+      <section id="recenzii">
+        <h2>Recenzii</h2>
+        <div class="slideshow-container">
+          <div class="slides-wrapper">
+            <article class="recenzie active">
+              <p>"Cea mai bună experiență!"</p>
+              <span>- Nume Elev</span>
+            </article>
+            <article class="recenzie">
+              <p>"Recomand cu căldură!"</p>
+              <span>- Nume Părinte</span>
+            </article>
+            <article class="recenzie">
+              <p>"Profesori de nota 10!"</p>
+              <span>- Alt Elev</span>
+            </article>
+          </div>
+
+          <div class="slideshow-controls">
+            <button id="prev-slide" class="slide-btn">❮</button>
+            <button id="next-slide" class="slide-btn">❯</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 OlimpClub. Toate drepturile rezervate.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
