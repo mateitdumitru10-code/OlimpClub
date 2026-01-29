@@ -698,3 +698,61 @@ footer a:hover {
     height: 250px; /* Și mai mic pe telefon */
   }
 }
+
+/* --- WHATSAPP FLOAT BUTTON --- */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  left: 30px; /* Poziționat în stânga */
+  z-index: 2500;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366; /* Verdele WhatsApp */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.whatsapp-float img {
+  width: 35px;
+  height: 35px;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  background-color: #128c7e; /* Verde mai închis la hover */
+}
+
+/* Ajustare pentru mobil */
+@media (max-width: 768px) {
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    left: 20px;
+  }
+  .whatsapp-float img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+/* Selectăm link-urile din secțiunea de contact */
+.contact-item a,
+.contact-item a:link,
+.contact-item a:visited {
+  color: #1a4a7a; /* Culoarea ta principală (Albastru OlimpClub) */
+  text-decoration: none; /* Scoate linia de dedesubt dacă nu o vrei */
+  transition: color 0.3s ease;
+}
+
+/* Stilul pentru când pui mouse-ul pe el */
+.contact-item a:hover {
+  color: #ffb81c; /* Se schimbă în auriu la hover */
+  text-decoration: underline; /* Apare linia doar la hover pentru feedback */
+}
