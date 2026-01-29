@@ -1,4 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // --- FUNCȚIE PENTRU NOTIFICĂRI PERSONALIZATE (TEMA OLIMPCLUB) ---
+  function showNotification(message, type = "success") {
+    let container = document.querySelector(".toast-container");
+    if (!container) {
+      container = document.createElement("div");
+      container.className = "toast-container";
+      document.body.appendChild(container);
+    }
+
+    const toast = document.createElement("div");
+    toast.className = `toast ${type}`;
+    toast.innerHTML = `<span>${message}</span>`;
+
+    container.appendChild(toast);
+
+    // Elimină notificarea după 4 secunde
+    setTimeout(() => {
+      toast.style.animation = "fadeOut 0.5s forwards";
+      setTimeout(() => toast.remove(), 500);
+    }, 4000);
+  }
+
   // --- Header Shrink Logic ---
   const header = document.querySelector("header");
   window.addEventListener("scroll", () => {
@@ -27,25 +49,52 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Contact Form Handling ---
+  // --- Contact Form Handling (CU NOTIFICĂRI CUSTOM) ---
   const contactForm = document.getElementById("contact-form");
   if (contactForm) {
-    contactForm.addEventListener("submit", (event) => {
+    contactForm.addEventListener("submit", async (event) => {
       event.preventDefault();
-      const name = contactForm.querySelector('input[name="nume"]').value;
-      const email = contactForm.querySelector('input[name="email"]').value;
-      const message = contactForm.querySelector('textarea[name="mesaj"]').value;
 
-      if (name && email && message) {
-        alert("Mesajul a fost trimis cu succes!");
-        contactForm.reset();
-      } else {
-        alert("Vă rugăm să completați toate câmpurile.");
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+      const formData = new FormData(contactForm);
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Se trimite...";
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: contactForm.method,
+          body: formData,
+          headers: {
+            Accept: "application/json",
+          },
+        });
+
+        if (response.ok) {
+          showNotification(
+            "Mesajul a fost trimis! Te contactăm curând.",
+            "success",
+          );
+          contactForm.reset();
+        } else {
+          const data = await response.json();
+          showNotification(
+            data.errors
+              ? data.errors.map((e) => e.message).join(", ")
+              : "Eroare la trimitere.",
+            "error",
+          );
+        }
+      } catch (error) {
+        showNotification("Eroare de conexiune. Verifică internetul.", "error");
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Trimite";
       }
     });
   }
 
-  // --- Slideshow Logic (Generalizat pentru Recenzii și Profesori) ---
+  // --- Slideshow Logic ---
   function setupSlideshow(
     containerId,
     slideSelector,
@@ -65,21 +114,19 @@ document.addEventListener("DOMContentLoaded", () => {
     function showSlide(index) {
       if (slides.length === 0) return;
 
-      // Adjust index for continuous looping
       if (index >= slides.length) currentSlideIndex = 0;
       else if (index < 0) currentSlideIndex = slides.length - 1;
       else currentSlideIndex = index;
 
-      slides.forEach((slide) => (slide.style.display = "none")); // Hide all
-      slides[currentSlideIndex].style.display = "flex"; // Show current
-      slides[currentSlideIndex].style.animation = "fadeEffect 0.5s ease-in-out"; // Reaplică animația
+      slides.forEach((slide) => (slide.style.display = "none"));
+      slides[currentSlideIndex].style.display = "flex";
+      slides[currentSlideIndex].style.animation = "fadeEffect 0.5s ease-in-out";
 
-      // Pentru slideshow-ul de profesori pe desktop, afișăm 3 odată
       if (
         containerId === ".slideshow-container-profesori" &&
         window.innerWidth >= 769
       ) {
-        slides.forEach((slide) => (slide.style.display = "none")); // Ascunde toate inițial
+        slides.forEach((slide) => (slide.style.display = "none"));
 
         for (let i = 0; i < 3; i++) {
           let actualIndex = (currentSlideIndex + i) % slides.length;
@@ -107,14 +154,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }, interval);
     }
 
-    // Initial display
     showSlide(currentSlideIndex);
   }
 
-  // Configurează slideshow-ul pentru recenzii
   setupSlideshow("#recenzii", ".recenzie", "next-slide", "prev-slide");
-
-  // Configurează slideshow-ul pentru profesori
   setupSlideshow(
     "#profesori-preview",
     ".profesor-slide",
@@ -122,13 +165,11 @@ document.addEventListener("DOMContentLoaded", () => {
     "prev-prof-slide",
   );
 
-  // Înlocuiește linia cu if (document.body.classList.contains("cursuri-page")) cu:
+  // --- Accordion Logic ---
   const cursuriList = document.querySelectorAll(".curs-tip");
-
   if (cursuriList.length > 0) {
     cursuriList.forEach((curs) => {
       curs.addEventListener("click", () => {
-        // Logica ta existentă pentru acordeon
         cursuriList.forEach((c) => {
           if (c !== curs) c.classList.remove("active");
         });
@@ -137,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Redirecționare Secțiune Cursuri ---
+  // --- Redirecționări ---
   const ctaCursuri = document.getElementById("cta-cursuri");
   if (ctaCursuri) {
     ctaCursuri.addEventListener("click", () => {
@@ -145,36 +186,42 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Redirecționare Secțiune Profesori (text link sub slideshow) ---
   const ctaProfesoriLink = document.querySelector(
     "#profesori-preview .cta-link",
   );
   if (ctaProfesoriLink) {
     ctaProfesoriLink.addEventListener("click", (event) => {
-      event.stopPropagation(); // Previne declanșarea click-ului pe întreaga secțiune dacă ar fi fost 'clickable-section'
+      event.stopPropagation();
       window.location.href = "profesori.html";
     });
   }
 
-  // --- Dropdown Cursuri (Accordion) (doar pe pagina cursuri.html) ---
-  if (document.body.classList.contains("cursuri-page")) {
-    // Adaugă o clasă body pe pagina de cursuri
-    const cursuri = document.querySelectorAll(".curs-tip");
-    cursuri.forEach((curs) => {
-      curs.addEventListener("click", () => {
-        cursuri.forEach((c) => {
-          if (c !== curs) c.classList.remove("active");
-        });
-        curs.classList.toggle("active");
-      });
-    });
-  }
-
-  // --- Redirecționare Secțiune Profesori ---
   const ctaProfesori = document.getElementById("profesori-preview");
   if (ctaProfesori) {
     ctaProfesori.addEventListener("click", () => {
       window.location.href = "profesori.html";
+    });
+  }
+
+  // --- LOGICĂ BACK TO TOP ---
+  const backToTopBtn = document.getElementById("back-to-top");
+
+  if (backToTopBtn) {
+    window.addEventListener("scroll", () => {
+      // Afișează butonul după ce am derulat 300px
+      if (window.scrollY > 300) {
+        backToTopBtn.style.display = "block";
+      } else {
+        backToTopBtn.style.display = "none";
+      }
+    });
+
+    backToTopBtn.addEventListener("click", () => {
+      // Scroll lin până la începutul paginii
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     });
   }
 });

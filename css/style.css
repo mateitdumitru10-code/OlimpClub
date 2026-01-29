@@ -193,7 +193,7 @@ section h2 {
 }
 
 #profesori {
-  background-color: #fffef2;
+  background-color: #ffffff;
 }
 
 /* SLIDESHOW STYLES */
@@ -474,7 +474,7 @@ footer {
   text-align: center;
   width: 100%;
   max-width: 1000px;
-  margin: 0 auto 5rem auto; /* 5rem distanță față de recenzii */
+  margin: 0 auto 4rem auto; /* 5rem distanță față de recenzii */
   box-sizing: border-box;
 }
 
@@ -526,5 +526,153 @@ footer {
   .profesor-slide {
     flex: 0 0 33.333%;
     display: flex; /* Afișează 3 pe desktop */
+  }
+}
+
+/* --- STYLING NOTIFICĂRI (CUSTOM ALERTS) --- */
+.toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toast {
+  background-color: #ffffff;
+  color: #333333;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 250px;
+  border-left: 6px solid #1a4a7a; /* Albastru implicit */
+  animation: slideIn 0.4s ease-out forwards;
+}
+
+/* Mesaj de succes: Verde pal cu bordură verde accentuat */
+.toast.success {
+  background-color: #e8f5e9; /* Verde pal */
+  border-left-color: #2e7d32; /* Verde închis/accentuat */
+  color: #1b5e20; /* Text verde închis pentru lizibilitate */
+}
+
+/* Mesaj de eroare: Rămâne cu Burgundy */
+.toast.error {
+  border-left-color: #b03a2e;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+footer a:hover {
+  color: #ffb81c !important; /* Auriul OlimpClub */
+}
+
+/* --- BUTON BACK TO TOP (AJUSTAT) --- */
+#back-to-top {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  right: 30px;
+  z-index: 2500;
+  border: none;
+  outline: none;
+  background-color: #1a4a7a;
+  color: white;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  /* Ajustări pentru săgeată */
+  font-size: 28px; /* Puțin mai mare pentru vizibilitate */
+  font-weight: 900; /* Maximul de grosime pentru font */
+  display: flex; /* Folosim flexbox pentru control total al poziției */
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 4px; /* Împinge săgeata în sus artificial */
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition:
+    background-color 0.3s,
+    transform 0.3s,
+    opacity 0.3s;
+  opacity: 0.8;
+}
+
+/* --- AJUSTARE PENTRU TELEFON (ECRANE MICI) --- */
+@media (max-width: 768px) {
+  #back-to-top {
+    width: 40px; /* Mai mic pe telefon */
+    height: 40px; /* Mai mic pe telefon */
+    font-size: 22px; /* Săgeată proporțională */
+    bottom: 20px; /* Îl coborâm puțin mai jos pe mobil să nu stea în drum */
+    right: 20px; /* Mai aproape de margine */
+    padding-bottom: 3px;
+  }
+}
+
+#back-to-top:hover {
+  background-color: #ffb81c;
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+/* Animație pentru apariție lină */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.8;
+  }
+}
+
+/* Containerul pentru hartă */
+.map-container {
+  width: 100%;
+  border-radius: 12px; /* Colțuri rotunjite ca la secțiunile tale */
+  overflow: hidden; /* Important pentru a tăia colțurile iframe-ului */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 3px solid #ffffff; /* Un mic contur alb */
+  line-height: 0; /* Elimină spațiul gol de sub iframe */
+}
+
+/* Efect de hover pe hartă */
+.map-container iframe {
+  filter: grayscale(20%) contrast(1.1); /* O face să pară mai elegantă */
+  transition: filter 0.3s ease;
+}
+
+.map-container:hover iframe {
+  filter: grayscale(0%) contrast(1); /* Revine la culori normale la hover */
+}
+
+/* Responsivitate pentru ecrane mici */
+@media (max-width: 768px) {
+  .map-container iframe {
+    height: 300px; /* Mai mică pe telefon */
   }
 }
