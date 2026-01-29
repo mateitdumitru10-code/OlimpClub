@@ -650,29 +650,51 @@ footer a:hover {
   }
 }
 
-/* Containerul pentru hartă */
+/* Containerul părinte care ține textul și harta */
+.contact-grid {
+  display: flex;
+  gap: 2rem;
+  align-items: center; /* Centrare verticală pe axa de mijloc */
+  margin-bottom: 2rem;
+}
+
+#info-contact {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+#map-section {
+  flex: 1.2; /* Am redus puțin lățimea relativă a hărții */
+  background: none;
+  padding: 0;
+  box-shadow: none;
+  border-top: none;
+  margin: 0;
+}
+
+/* Containerul hărții cu înălțime fixă mai mică */
 .map-container {
-  width: 100%;
-  border-radius: 12px; /* Colțuri rotunjite ca la secțiunile tale */
-  overflow: hidden; /* Important pentru a tăia colțurile iframe-ului */
+  border-radius: 12px;
+  overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  border: 3px solid #ffffff; /* Un mic contur alb */
-  line-height: 0; /* Elimină spațiul gol de sub iframe */
+  width: 100%;
+  height: 300px; /* DIMENSIUNE MICȘORATĂ */
 }
 
-/* Efect de hover pe hartă */
 .map-container iframe {
-  filter: grayscale(20%) contrast(1.1); /* O face să pară mai elegantă */
-  transition: filter 0.3s ease;
+  display: block;
+  width: 100%;
+  height: 100%; /* Ocupă fix cei 300px ai containerului */
 }
 
-.map-container:hover iframe {
-  filter: grayscale(0%) contrast(1); /* Revine la culori normale la hover */
-}
-
-/* Responsivitate pentru ecrane mici */
+/* --- RESPONSIV: Mobil --- */
 @media (max-width: 768px) {
-  .map-container iframe {
-    height: 300px; /* Mai mică pe telefon */
+  .contact-grid {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .map-container {
+    height: 250px; /* Și mai mic pe telefon */
   }
 }
