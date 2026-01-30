@@ -224,4 +224,73 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  const modal = document.getElementById("booking-modal");
+  const closeBtn = document.querySelector(".close-modal");
+  const targetProfSpan = document.getElementById("target-prof");
+  const bookingForm = document.getElementById("booking-form");
+
+  // Deschide modalul
+  document.querySelectorAll(".open-modal").forEach((button) => {
+    button.addEventListener("click", () => {
+      const profName = button.getAttribute("data-prof");
+      targetProfSpan.textContent = profName;
+      modal.style.display = "block";
+    });
+  });
+
+  // Închide modalul la click pe X
+  closeBtn.onclick = () => {
+    modal.style.display = "none";
+  };
+
+  // Închide modalul la click în afara ferestrei albe
+  window.onclick = (event) => {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+
+  // Trimiterea formularului către Formspree + WhatsApp
+  bookingForm.onsubmit = function (e) {
+    e.preventDefault();
+
+    const nume = document.getElementById("student_name").value;
+    const clasa = document.getElementById("student_class").value;
+    const materia = document.getElementById("student_subject").value;
+    const prof = targetProfSpan.textContent;
+
+    // Pregătim datele pentru Formspree
+    const formData = new FormData(this);
+    formData.append("Profesor", prof); // Adăugăm manual și numele profesorului
+
+    // 1. Trimitem datele către Formspree
+    fetch("https://formspree.io/f/xdazelrd", {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          // 2. Dacă trimiterea a reușit, deschidem WhatsApp
+          const mesaj = `Bună ziua! Sunt ${nume}, elev în ${clasa}. Doresc să rezerv o ședință de ${materia} cu profesorul ${prof}.`;
+          const url = `https://wa.me/40771059496?text=${encodeURIComponent(mesaj)}`;
+
+          window.open(url, "_blank");
+
+          // Resetăm și închidem
+          modal.style.display = "none";
+          bookingForm.reset();
+        } else {
+          alert(
+            "A apărut o eroare la trimiterea datelor. Vă rugăm să încercați din nou.",
+          );
+        }
+      })
+      .catch((error) => {
+        alert("Eroare de rețea. Verificați conexiunea și încercați din nou.");
+      });
+  };
 });

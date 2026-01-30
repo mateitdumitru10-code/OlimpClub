@@ -68,9 +68,13 @@
                 <strong>100%</strong>
                 <span>Rată promovare</span>
               </div>
-              <a href="https://wa.me/40771059496" class="contact-prof-btn"
-                >Rezervă curs</a
+              <button
+                type="button"
+                class="contact-prof-btn open-modal"
+                data-prof="Andrei Popescu"
               >
+                Rezervă curs
+              </button>
             </div>
           </div>
         </article>
@@ -109,9 +113,13 @@
                 <strong>9.75</strong>
                 <span>Media pe grupă</span>
               </div>
-              <a href="https://wa.me/40771059496" class="contact-prof-btn"
-                >Rezervă curs</a
+              <button
+                type="button"
+                class="contact-prof-btn open-modal"
+                data-prof="Elena Ionescu"
               >
+                Rezervă curs
+              </button>
             </div>
           </div>
         </article>
@@ -129,6 +137,51 @@
         />
       </a>
     </main>
+
+    <div id="booking-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>Rezervare Curs - <span id="target-prof"></span></h3>
+        <form id="booking-form">
+          <input
+            type="hidden"
+            name="_subject"
+            value="Rezervare Nouă OlimpClub"
+          />
+
+          <label for="student_name">Nume Elev:</label>
+          <input
+            type="text"
+            id="student_name"
+            name="nume"
+            required
+            placeholder="Ex: Popescu Ion"
+          />
+
+          <label for="student_class">Clasa:</label>
+          <input
+            type="text"
+            id="student_class"
+            name="clasa"
+            required
+            placeholder="Ex: Clasa a VIII-a"
+          />
+
+          <label for="student_subject">Materia dorită:</label>
+          <input
+            type="text"
+            id="student_subject"
+            name="materia"
+            required
+            placeholder="Ex: Matematică"
+          />
+
+          <button type="submit" class="submit-booking">
+            Trimite și continuă pe WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
 
     <footer>
       <p>&copy; 2026 OlimpClub. Toate drepturile rezervate.</p>

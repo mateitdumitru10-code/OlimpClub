@@ -1084,6 +1084,7 @@ footer a:hover {
 
 .contact-prof-btn:hover {
   background: #b03a2e;
+  cursor: pointer;
 }
 
 /* Responsivitate pentru mobil */
@@ -1096,4 +1097,111 @@ footer a:hover {
     flex-direction: column;
     gap: 15px;
   }
+}
+
+/* Containerul Modalului */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px); /* Efect de blur pe fundal */
+}
+
+/* Fereastra albă */
+.modal-content {
+  background-color: #ffffff;
+  margin: 5% auto;
+  padding: 30px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  border-top: 6px solid #ffb81c; /* Linia aurie OlimpClub */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Titlul Formularului */
+.modal-content h3 {
+  color: #1a4a7a;
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* Butonul de închidere (X) */
+.close-modal {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 24px;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-modal:hover {
+  color: #b03a2e;
+}
+
+/* Structura Formularului */
+#booking-form {
+  display: flex;
+  flex-direction: column; /* Pune elementele unul sub altul */
+  gap: 15px; /* Spațiu între câmpuri */
+}
+
+/* Stil pentru Label-uri */
+#booking-form label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: -10px; /* Aduce label-ul mai aproape de input */
+}
+
+/* Stil pentru Input-uri */
+#booking-form input {
+  padding: 12px 15px;
+  border: 2px solid #e1e1e1;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
+  outline: none;
+}
+
+#booking-form input:focus {
+  border-color: #1a4a7a;
+  box-shadow: 0 0 8px rgba(26, 74, 122, 0.1);
+}
+
+/* Butonul de Trimite */
+.submit-booking {
+  background-color: #25d366; /* Culoare oficială WhatsApp */
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
+}
+
+.submit-booking:hover {
+  background-color: #128c7e;
+  transform: translateY(-2px);
+}
+
+.submit-booking:active {
+  transform: translateY(0);
 }
