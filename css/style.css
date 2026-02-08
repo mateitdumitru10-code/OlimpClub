@@ -906,6 +906,11 @@ footer a:hover {
   height: 35px;
 }
 
+.whatsapp-float:hover {
+  background-color: #128c7e;
+  transform: scale(1.1);
+}
+
 @media (max-width: 768px) {
   .whatsapp-float {
     width: 50px;
@@ -1288,5 +1293,12 @@ footer a:hover {
   .btn-primary {
     padding: 10px 22px;
     font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  #profesori-preview {
+    width: calc(100% - 2rem);
+    margin: 0 auto 2rem auto;
   }
 }

@@ -118,41 +118,73 @@ document.addEventListener("DOMContentLoaded", () => {
       else if (index < 0) currentSlideIndex = slides.length - 1;
       else currentSlideIndex = index;
 
-      slides.forEach((slide) => (slide.style.display = "none"));
-      slides[currentSlideIndex].style.display = "flex";
-      slides[currentSlideIndex].style.animation = "fadeEffect 0.5s ease-in-out";
+      slides.forEach((slide) => {
+        slide.style.display = "none";
+        slide.style.order = "";
+      });
 
       if (
-        containerId === ".slideshow-container-profesori" &&
+        (containerId === ".slideshow-container-profesori" ||
+          containerId === "#profesori-preview") &&
         window.innerWidth >= 769
       ) {
-        slides.forEach((slide) => (slide.style.display = "none"));
-
         for (let i = 0; i < 3; i++) {
           let actualIndex = (currentSlideIndex + i) % slides.length;
           slides[actualIndex].style.display = "flex";
+          slides[actualIndex].style.order = i;
           slides[actualIndex].style.animation = "fadeEffect 0.5s ease-in-out";
         }
+      } else {
+        slides[currentSlideIndex].style.display = "flex";
+        slides[currentSlideIndex].style.animation =
+          "fadeEffect 0.5s ease-in-out";
       }
     }
 
+    const getStep = () => {
+      if (
+        (containerId === ".slideshow-container-profesori" ||
+          containerId === "#profesori-preview") &&
+        window.innerWidth >= 769
+      ) {
+        return 3;
+      }
+      return 1;
+    };
+
     if (nextBtn) {
       nextBtn.addEventListener("click", () => {
-        showSlide(currentSlideIndex + 1);
+        let step = getStep();
+        let nextIndex = currentSlideIndex + step;
+        if (nextIndex >= slides.length) nextIndex = 0;
+        showSlide(nextIndex);
       });
     }
 
     if (prevBtn) {
       prevBtn.addEventListener("click", () => {
-        showSlide(currentSlideIndex - 1);
+        let step = getStep();
+        let prevIndex = currentSlideIndex - step;
+        if (prevIndex < 0)
+          prevIndex = slides.length + (prevIndex % slides.length);
+        if (prevIndex >= slides.length) prevIndex = 0;
+        showSlide(prevIndex);
       });
     }
 
     if (autoRotate) {
       setInterval(() => {
-        showSlide(currentSlideIndex + 1);
+        let step = getStep();
+        let nextIndex = currentSlideIndex + step;
+        if (nextIndex >= slides.length) nextIndex = 0;
+        showSlide(nextIndex);
       }, interval);
     }
+
+    // Recalculate slide visibility on window resize (e.g. switching between mobile/desktop view)
+    window.addEventListener("resize", () => {
+      showSlide(currentSlideIndex);
+    });
 
     showSlide(currentSlideIndex);
   }
@@ -207,14 +239,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const backToTopBtn = document.getElementById("back-to-top");
 
   if (backToTopBtn) {
-    window.addEventListener("scroll", () => {
+    const toggleBackToTop = () => {
       // Afișează butonul după ce am derulat 300px
       if (window.scrollY > 300) {
         backToTopBtn.style.display = "block";
       } else {
         backToTopBtn.style.display = "none";
       }
-    });
+    };
+
+    window.addEventListener("scroll", toggleBackToTop);
+    toggleBackToTop();
 
     backToTopBtn.addEventListener("click", () => {
       // Scroll lin până la începutul paginii
