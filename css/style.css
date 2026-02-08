@@ -997,7 +997,7 @@ footer a:hover {
 .profesor-footer {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   margin-top: 1.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid #eee;
@@ -1032,6 +1032,7 @@ footer a:hover {
   .profesor-footer {
     flex-direction: column;
     gap: 15px;
+    align-items: start;
   }
 }
 
@@ -1082,6 +1083,8 @@ footer a:hover {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  width: 100%;
+  align-items: center;
 }
 #booking-form label {
   font-weight: 600;
@@ -1093,6 +1096,7 @@ footer a:hover {
   border: 2px solid #e1e1e1;
   border-radius: 10px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .submit-booking {
@@ -1109,6 +1113,7 @@ footer a:hover {
   .modal-content {
     padding: 20px;
     margin: 5% auto;
+    width: 80%;
   }
   .close-modal {
     top: 10px;
@@ -1116,11 +1121,6 @@ footer a:hover {
   }
   #booking-form {
     gap: 10px;
-  }
-  #booking-form input,
-  .submit-booking {
-    box-sizing: border-box;
-    align-self: center;
   }
 }
 
