@@ -1,0 +1,276 @@
+/* Specific styling for the Courses page */
+#cursuri-header {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: linear-gradient(to right, #fdfcf7, #ffffff);
+  /* Asigurăm centrarea în grid-ul main */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#cursuri-header h2 {
+  font-size: 2.2rem;
+  color: #1a4a7a;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+#cursuri-header h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #b03a2e;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+#cursuri-header p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #444;
+  max-width: 850px;
+  margin: 0 auto;
+  font-style: italic;
+}
+
+#cursuri-header p b {
+  color: #1a4a7a;
+  border-bottom: 2px solid rgba(255, 184, 28, 0.3);
+}
+
+@media (max-width: 768px) {
+  #cursuri-header {
+    padding: 2rem 1rem;
+  }
+  #cursuri-header h2 {
+    font-size: 1.8rem;
+  }
+}
+
+.curs-tip {
+  border-left: 6px solid #1a4a7a;
+  color: #444444;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.curs-tip:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.curs-tip h3 {
+  color: #333333;
+  margin-top: 0;
+}
+
+.curs-detalii {
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    max-height 0s ease-out,
+    padding 0.2s ease;
+  opacity: 0;
+}
+
+.curs-tip.active .curs-detalii {
+  max-height: 500px;
+  opacity: 1;
+  padding-top: 10px;
+  border-top: 1px dashed #ddd;
+  margin-top: 10px;
+}
+
+.curs-tip h3::after {
+  content: " ▼";
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.curs-tip.active h3::after {
+  transform: rotate(180deg);
+}
+
+.curs-image-wrapper {
+  width: 100%;
+  margin: 1rem 0;
+  overflow: hidden;
+  border-radius: 12px;
+  height: 200px;
+}
+
+.curs-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.curs-tip:hover .curs-img {
+  transform: scale(1.05);
+}
+
+.curs-container {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.curs-text {
+  flex: 1.5;
+}
+
+.curs-image-side {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.curs-img-integrated {
+  width: 100%;
+  max-width: 280px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 768px) {
+  .curs-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .curs-img-integrated {
+    max-width: 100%;
+    height: 200px;
+  }
+}
+
+.clickable-section {
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  position: relative;
+}
+
+.clickable-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cta-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: 700;
+  color: #1a4a7a;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+.clickable-section:hover .cta-link {
+  color: #b03a2e;
+}
+
+/* --- 7. SLIDESHOW PROFESORI --- */
+#profesori-preview {
+  text-align: center;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto 4rem auto;
+  box-sizing: border-box;
+}
+
+.slideshow-container-profesori {
+  position: relative;
+  width: 100%;
+  margin: 1rem auto;
+  overflow: hidden;
+  min-height: 280px;
+}
+
+.slides-wrapper-profesori {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.profesor-slide {
+  flex: 0 0 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.profesor-slide.active {
+  display: flex;
+  animation: fadeEffect 0.5s ease-in-out;
+}
+
+.profesor-slide img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #ffb81c;
+  padding: 5px;
+  background-color: #ffffff;
+  margin: 0 auto 1rem auto;
+  display: block;
+}
+
+@media (min-width: 769px) {
+  .profesor-slide {
+    flex: 0 0 33.333%;
+    display: flex;
+  }
+}
+
+#profesori {
+  background-color: #ffffff;
+}
+
+article.profesor {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+article.profesor figure {
+  margin: 0 0 1rem 0;
+  display: inline-block;
+}
+
+article.profesor img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #ffb81c;
+  padding: 5px;
+  background: white;
+  transition: transform 0.3s ease;
+}
+
+article.profesor img:hover {
+  transform: scale(1.05);
+}
+
+article.profesor h3 {
+  color: #333333;
+  margin-top: 0.5rem;
+}

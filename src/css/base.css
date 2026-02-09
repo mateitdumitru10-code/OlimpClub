@@ -1,0 +1,69 @@
+/* 1. LAYOUT & STICKY FOOTER LOGIC */
+
+/* Hide scrollbar for Chrome, Safari and Edge on Desktop */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ensure scrolling still works */
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  overflow-y: scroll; /* Keeps the ability to scroll */
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fcfaf2;
+  color: #333333; /* Dark Gray for main body text */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 85px;
+}
+
+h1 {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  color: #ffffff; /* Logo stays white */
+  transition:
+    color 0.3s ease,
+    font-size 0.3s ease;
+}
+
+h1:hover {
+  color: #ffb81c;
+}
+
+/* Base section style */
+section {
+  background-color: #ffffff;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border-top: 5px solid transparent;
+}
+
+section:nth-of-type(even) {
+  border-top-color: #b03a2e;
+}
+
+section:nth-of-type(odd) {
+  border-top-color: #ffb81c;
+}
+
+section h2 {
+  color: #333333;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
