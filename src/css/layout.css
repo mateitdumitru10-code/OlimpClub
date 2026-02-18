@@ -2,7 +2,7 @@
 header {
   background-color: #1a4a7a;
   color: #ffffff;
-  padding: 1.5rem 2rem;
+  padding: 0.5rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -20,20 +20,32 @@ header {
 }
 
 header.shrunk {
-  padding: 0.7rem 2rem;
+  padding: 0.2rem 2rem;
   background-color: rgba(26, 74, 122, 0.98);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-header.shrunk h1 {
-  font-size: 1.4rem;
+.site-logo {
+  height: 70px;
+  width: auto;
+  transition: all 0.3s ease;
+}
+
+.site-logo:hover {
+  filter: brightness(1.2) drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+  transform: scale(1.05);
+}
+
+header.shrunk .site-logo {
+  height: 50px;
 }
 
 /* 3. NAVIGATION & MENU */
 #nav-toggle {
   display: block;
   position: absolute;
-  top: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
   right: 1.5rem;
   background: none;
   border: none;
@@ -41,11 +53,6 @@ header.shrunk h1 {
   font-size: 2.2rem;
   cursor: pointer;
   z-index: 1000;
-  transition: top 0.3s ease;
-}
-
-header.shrunk #nav-toggle {
-  top: 0.2rem;
 }
 
 #nav-menu {
@@ -304,6 +311,7 @@ footer a:hover {
   text-transform: uppercase;
   letter-spacing: 1px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  color: #ffffff;
 }
 
 .hero-content p {

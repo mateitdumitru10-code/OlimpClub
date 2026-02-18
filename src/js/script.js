@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // --- H1 Logo Click ---
-  const logoTitle = document.querySelector("header h1");
+  const logoTitle = document.querySelector("header .site-logo");
   if (logoTitle) {
     logoTitle.style.cursor = "pointer";
     logoTitle.addEventListener("click", () => {
