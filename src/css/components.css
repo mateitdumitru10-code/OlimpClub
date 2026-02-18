@@ -321,7 +321,7 @@
 
 /* Card Profesor */
 .profesor-card {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 16px;
   padding: 2rem;
   margin-bottom: 2.5rem;
