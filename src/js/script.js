@@ -291,9 +291,14 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     const nume = document.getElementById("student_name").value;
-    const clasa = document.getElementById("student_class").value;
-    const materia = document.getElementById("student_subject").value;
+    const scop = document.getElementById("student_scope").value;
     const prof = targetProfSpan.textContent;
+
+    const phoneNumbers = {
+      "Alessia Cruceru": "40734890699",
+      "Teodor Alin": "40763927165",
+      "Verdeș Iulia": "40744203645",
+    };
 
     // Pregătim datele pentru Formspree
     const formData = new FormData(this);
@@ -310,8 +315,9 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((response) => {
         if (response.ok) {
           // 2. Dacă trimiterea a reușit, deschidem WhatsApp
-          const mesaj = `Bună ziua! Sunt ${nume}, elev în ${clasa}. Doresc să rezerv o ședință de ${materia} cu profesorul ${prof}.`;
-          const url = `https://wa.me/40771059496?text=${encodeURIComponent(mesaj)}`;
+          const mesaj = `Bună ziua! Sunt ${nume}. Doresc să rezerv o ședință cu profesorul ${prof}. Scop: ${scop}`;
+          const phoneNumber = phoneNumbers[prof] || "40771059496";
+          const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(mesaj)}`;
 
           window.open(url, "_blank");
 
