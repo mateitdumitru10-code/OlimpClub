@@ -353,6 +353,12 @@ footer a:hover {
     padding: 1.5rem 1rem;
   }
 
+  main:has(.hero-online) > section:not(.hero-online) {
+    width: calc(100% - 1rem);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .about-grid {
     grid-template-columns: 1fr;
     text-align: left;
