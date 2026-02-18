@@ -43,6 +43,7 @@
 @media (max-width: 768px) {
   #cursuri-header {
     padding: 2rem 1rem;
+    padding: 1.25rem 1rem;
   }
   #cursuri-header h2 {
     font-size: 1.8rem;
