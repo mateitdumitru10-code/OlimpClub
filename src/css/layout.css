@@ -324,7 +324,7 @@ footer a:hover {
     margin-left: auto;
     margin-right: auto;
   }
-  
+
   #profesori-preview {
     width: calc(100% - 2rem);
     margin: 0 auto 2rem auto;
@@ -332,15 +332,24 @@ footer a:hover {
 }
 
 @media (max-width: 768px) {
+  main {
+    padding: 1rem 0.5rem;
+  }
+
+  main > section:not(.hero-online) {
+    width: 100%;
+    padding: 1.5rem 1rem;
+  }
+
   .about-grid {
     grid-template-columns: 1fr;
-    text-align: center;
+    text-align: left;
   }
   .about-image-wrapper {
     order: -1;
   }
   .stats-mini {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .contact-grid {

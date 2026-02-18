@@ -428,12 +428,15 @@
 
 .modal-content {
   background-color: #ffffff;
-  margin: 5% auto;
+  margin: 0;
   padding: 30px;
   border-radius: 20px;
   width: 90%;
   max-width: 450px;
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
   border-top: 6px solid #ffb81c;
   display: flex;
@@ -489,7 +492,7 @@
 @media (max-width: 600px) {
   .modal-content {
     padding: 20px;
-    margin: 5% auto;
+    margin: 0;
     width: 80%;
   }
   .close-modal {
@@ -525,5 +528,36 @@
   .btn-primary {
     padding: 10px 22px;
     font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .profesor-card {
+    padding: 1.25rem 1rem;
+  }
+
+  .profesor-top {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .profesor-img-container {
+    margin: 0 auto;
+  }
+
+  .badges-row {
+    justify-content: center;
+  }
+
+  .profesor-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .contact-prof-btn {
+    width: 100%;
   }
 }
