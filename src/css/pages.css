@@ -14,7 +14,7 @@ body:has(#profesori-preview) section:first-of-type {
 
 @media (max-width: 768px) {
   body:has(#profesori-preview) section:first-of-type {
-    min-height: calc(100vh - 85px);
+    min-height: calc(100vh - 60px);
   }
 }
 
