@@ -305,6 +305,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const formData = new FormData(this);
     formData.append("Profesor", prof); // Adăugăm manual și numele profesorului
 
+    // Deschidem fereastra imediat pentru a evita popup blocker-ul
+    const newWindow = window.open("", "_blank");
+    if (newWindow) {
+      newWindow.document.write("Se procesează cererea...");
+    }
+
     // 1. Trimitem datele către Formspree
     fetch("https://formspree.io/f/xdazelrd", {
       method: "POST",
@@ -320,18 +326,22 @@ document.addEventListener("DOMContentLoaded", () => {
           const phoneNumber = phoneNumbers[prof] || "40771059496";
           const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(mesaj)}`;
 
-          window.open(url, "_blank");
+          if (newWindow) {
+            newWindow.location.href = url;
+          }
 
           // Resetăm și închidem
           modal.style.display = "none";
           bookingForm.reset();
         } else {
+          if (newWindow) newWindow.close();
           alert(
             "A apărut o eroare la trimiterea datelor. Vă rugăm să încercați din nou.",
           );
         }
       })
       .catch((error) => {
+        if (newWindow) newWindow.close();
         alert("Eroare de rețea. Verificați conexiunea și încercați din nou.");
       });
   };
