@@ -258,6 +258,7 @@
     transform 0.3s,
     opacity 0.3s;
   opacity: 0.8;
+  -webkit-backface-visibility: hidden;
 }
 
 #back-to-top:hover {
@@ -274,6 +275,7 @@
     bottom: calc(10px + env(safe-area-inset-bottom));
     right: 10px;
     padding-bottom: 3px;
+    transition: opacity 0.3s, background-color 0.3s;
   }
 }
 
@@ -294,6 +296,7 @@
   transition:
     transform 0.3s ease,
     background-color 0.3s ease;
+  -webkit-backface-visibility: hidden;
 }
 
 .whatsapp-float img {
@@ -312,6 +315,7 @@
     height: 50px;
     bottom: calc(10px + env(safe-area-inset-bottom));
     left: 10px;
+    transition: background-color 0.3s ease;
   }
   .whatsapp-float img {
     width: 25px;
