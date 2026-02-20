@@ -1,3 +1,23 @@
+/* --- HOME PAGE HERO FIX --- */
+/* Identificăm pagina Home prin prezența secțiunii #profesori-preview */
+body:has(#profesori-preview) section:first-of-type {
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+  min-height: calc(100vh - 85px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  body:has(#profesori-preview) section:first-of-type {
+    min-height: 85vh;
+  }
+}
+
 /* Specific styling for the Courses page */
 #cursuri-header {
   text-align: center;
