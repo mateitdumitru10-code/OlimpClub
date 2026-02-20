@@ -172,6 +172,12 @@ footer a:hover {
   color: #ffb81c !important;
 }
 
+.footer-terms-link {
+  color: #d1d1d1;
+  font-size: 0.8rem;
+  text-decoration: underline;
+}
+
 /* Contact layout */
 .contact-grid {
   display: flex;

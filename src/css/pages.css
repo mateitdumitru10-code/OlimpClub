@@ -18,6 +18,11 @@ body:has(#profesori-preview) section:first-of-type {
   }
 }
 
+/* Index Page Specifics */
+#despre {
+  scroll-margin-top: 85px;
+}
+
 /* Specific styling for the Courses page */
 #cursuri-header {
   text-align: center;
