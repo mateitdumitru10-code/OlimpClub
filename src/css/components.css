@@ -258,13 +258,11 @@
     transform 0.3s,
     opacity 0.3s;
   opacity: 0.8;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
 }
 
 #back-to-top:hover {
   background-color: #ffb81c;
-  transform: scale(1.1) translateZ(0);
+  transform: scale(1.1);
   opacity: 1;
 }
 
@@ -296,8 +294,6 @@
   transition:
     transform 0.3s ease,
     background-color 0.3s ease;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
 }
 
 .whatsapp-float img {
@@ -307,7 +303,7 @@
 
 .whatsapp-float:hover {
   background-color: #128c7e;
-  transform: scale(1.1) translateZ(0);
+  transform: scale(1.1);
 }
 
 @media (max-width: 768px) {
