@@ -1,20 +1,18 @@
 /* 1. LAYOUT & STICKY FOOTER LOGIC */
 
 /* Hide scrollbar for Chrome, Safari and Edge on Desktop */
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
   display: none;
 }
 
 /* Ensure scrolling still works */
-body {
+html {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
-  overflow-y: scroll; /* Keeps the ability to scroll */
 }
 
 html,
 body {
-  height: 100%;
   margin: 0;
 }
 
