@@ -199,6 +199,41 @@ body:has(#profesori-preview) section:first-of-type {
   color: #b03a2e;
 }
 
+/* --- MISSING COURSE CTA --- */
+.missing-course-cta {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  text-align: center;
+  margin: 3rem auto;
+  box-shadow: 0 8px 20px rgba(26, 74, 122, 0.1);
+  border-top: 6px solid #ffb81c;
+  max-width: 900px;
+}
+
+.missing-course-cta h3 {
+  color: #1a4a7a;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.missing-course-cta p {
+  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .missing-course-cta {
+    padding: 2rem 1rem;
+    margin: 2rem 1.5rem;
+  }
+  .missing-course-cta h3 {
+    font-size: 1.5rem;
+  }
+}
+
 /* --- 7. SLIDESHOW PROFESORI --- */
 #profesori-preview {
   text-align: center;
