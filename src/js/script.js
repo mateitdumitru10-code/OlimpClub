@@ -46,6 +46,11 @@ document.addEventListener("DOMContentLoaded", () => {
   if (navToggle && navMenu) {
     navToggle.addEventListener("click", () => {
       navMenu.classList.toggle("nav-menu-active");
+      if (navMenu.classList.contains("nav-menu-active")) {
+        navToggle.textContent = "✕";
+      } else {
+        navToggle.textContent = "☰";
+      }
     });
   }
 
@@ -354,4 +359,15 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Eroare de rețea. Verificați conexiunea și încercați din nou.");
       });
   };
+
+  // --- Active Navigation Logic ---
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+  const navLinks = document.querySelectorAll(".nav-menu a");
+
+  navLinks.forEach((link) => {
+    const linkHref = link.getAttribute("href").replace("./", "");
+    if (linkHref === currentPage || (currentPage === "index.html" && linkHref === "")) {
+      link.classList.add("active");
+    }
+  });
 });

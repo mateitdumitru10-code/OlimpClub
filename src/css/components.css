@@ -175,19 +175,24 @@
 }
 
 #contact-form button {
-  background-color: #b03a2e;
+  background: linear-gradient(135deg, #b03a2e 0%, #d34536 100%);
   color: #ffffff;
   border: none;
+  padding: 16px;
+  border-radius: 30px;
   cursor: pointer;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-top: 1rem;
-  transition: background 0.3s ease;
+  box-shadow: 0 4px 15px rgba(176, 58, 46, 0.3);
+  transition: all 0.3s ease;
 }
 
 #contact-form button:hover {
-  background-color: #8e2f25;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(176, 58, 46, 0.4);
+  filter: brightness(1.1);
 }
 
 /* --- STYLING NOTIFICĂRI --- */
@@ -409,18 +414,23 @@
 }
 
 .contact-prof-btn {
-  background: #1a4a7a;
+  background: linear-gradient(135deg, #1a4a7a 0%, #2c5c8c 100%);
   color: white;
   text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  transition: background 0.3s;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(26, 74, 122, 0.25);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .contact-prof-btn:hover {
-  background: #b03a2e;
+  background: linear-gradient(135deg, #b03a2e 0%, #d34536 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(176, 58, 46, 0.3);
   cursor: pointer;
 }
 
@@ -491,13 +501,25 @@
 }
 
 .submit-booking {
-  background-color: #25d366;
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
   color: white;
-  padding: 15px;
+  padding: 16px;
   border: none;
-  border-radius: 10px;
-  font-weight: bold;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   cursor: pointer;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.submit-booking:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+  filter: brightness(1.05);
 }
 
 @media (max-width: 600px) {
