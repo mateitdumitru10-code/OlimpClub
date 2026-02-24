@@ -299,6 +299,8 @@ document.addEventListener("DOMContentLoaded", () => {
       "Teodor Alin": "40763927165",
       "Verdeș Iulia": "40744203645",
       "Ionescu Sorana": "40758845592",
+      "Bianca Mihai": "40771059496",
+      "Matei Dumitru": "40743175943",
     };
 
     // Pregătim datele pentru Formspree
