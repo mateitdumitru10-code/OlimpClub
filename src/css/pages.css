@@ -35,7 +35,7 @@ body:has(#profesori-preview) section:first-of-type {
 
 #cursuri-header h2 {
   font-size: 2.2rem;
-  color: #1a4a7a;
+  color: var(--primary-color);
   margin-bottom: 1.5rem;
   position: relative;
   display: inline-block;
@@ -46,7 +46,7 @@ body:has(#profesori-preview) section:first-of-type {
   display: block;
   width: 60px;
   height: 4px;
-  background: #b03a2e;
+  background: var(--secondary-color);
   margin: 10px auto 0;
   border-radius: 2px;
 }
@@ -61,7 +61,7 @@ body:has(#profesori-preview) section:first-of-type {
 }
 
 #cursuri-header p b {
-  color: #1a4a7a;
+  color: var(--primary-color);
   border-bottom: 2px solid rgba(255, 184, 28, 0.3);
 }
 
@@ -76,7 +76,7 @@ body:has(#profesori-preview) section:first-of-type {
 }
 
 .curs-tip {
-  border-left: 6px solid #1a4a7a;
+  border-left: 6px solid var(--primary-color);
   color: #444444;
   transition:
     transform 0.3s ease,
@@ -90,7 +90,7 @@ body:has(#profesori-preview) section:first-of-type {
 }
 
 .curs-tip h3 {
-  color: #333333;
+  color: var(--text-color);
   margin-top: 0;
 }
 
@@ -194,36 +194,36 @@ body:has(#profesori-preview) section:first-of-type {
   display: inline-block;
   margin-top: 1rem;
   font-weight: 700;
-  color: #1a4a7a;
+  color: var(--primary-color);
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 0.9rem;
 }
 
 .clickable-section:hover .cta-link {
-  color: #b03a2e;
+  color: var(--secondary-color);
 }
 
 /* --- MISSING COURSE CTA --- */
 .missing-course-cta {
-  background-color: #ffffff;
+  background-color: var(--white);
   border-radius: 12px;
   padding: 3rem 2rem;
   text-align: center;
   margin: 3rem auto;
   box-shadow: 0 8px 20px rgba(26, 74, 122, 0.1);
-  border-top: 6px solid #ffb81c;
+  border-top: 6px solid var(--accent-color);
   max-width: 900px;
 }
 
 .missing-course-cta h3 {
-  color: #1a4a7a;
+  color: var(--primary-color);
   font-size: 1.8rem;
   margin-bottom: 1rem;
 }
 
 .missing-course-cta p {
-  color: #555;
+  color: var(--text-light);
   font-size: 1.1rem;
   margin-bottom: 2rem;
   line-height: 1.6;
@@ -292,9 +292,9 @@ body:has(#profesori-preview) section:first-of-type {
   height: 140px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #ffb81c;
+  border: 4px solid var(--accent-color);
   padding: 5px;
-  background-color: #ffffff;
+  background-color: var(--white);
   margin: 0 auto 1rem auto;
   display: block;
 }
@@ -329,9 +329,9 @@ article.profesor img {
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #ffb81c;
+  border: 4px solid var(--accent-color);
   padding: 5px;
-  background: white;
+  background: var(--white);
   transition: transform 0.3s ease;
 }
 
@@ -340,6 +340,6 @@ article.profesor img:hover {
 }
 
 article.profesor h3 {
-  color: #333333;
+  color: var(--text-color);
   margin-top: 0.5rem;
 }

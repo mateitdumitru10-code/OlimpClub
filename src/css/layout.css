@@ -1,7 +1,7 @@
 /* 2. THEMED HEADER - STICKY & SHRINKING */
 header {
-  background-color: #1a4a7a;
-  color: #ffffff;
+  background-color: var(--primary-color);
+  color: var(--white);
   padding: 0.5rem 2rem;
   display: flex;
   align-items: center;
@@ -49,7 +49,7 @@ header.shrunk .site-logo {
   right: 1.5rem;
   background: none;
   border: none;
-  color: #ffb81c;
+  color: var(--accent-color);
   font-size: 2.2rem;
   cursor: pointer;
   z-index: 1000;
@@ -60,7 +60,7 @@ header.shrunk .site-logo {
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: #1a4a7a;
+  background-color: var(--primary-color);
   width: 100%;
   padding: 1.5rem 0;
   z-index: 999;
@@ -70,7 +70,7 @@ header.shrunk .site-logo {
 #nav-menu.nav-menu-active {
   display: flex;
   flex-direction: column;
-  border-top: 2px solid #ffb81c;
+  border-top: 2px solid var(--accent-color);
 }
 
 .nav-menu {
@@ -90,7 +90,7 @@ header.shrunk .site-logo {
 }
 
 .nav-menu a {
-  color: #ffffff;
+  color: var(--white);
   text-decoration: none;
   font-size: 1.1rem;
   font-weight: 500;
@@ -99,7 +99,12 @@ header.shrunk .site-logo {
 }
 
 .nav-menu a:hover {
-  color: #ffb81c;
+  color: var(--accent-color);
+}
+
+.nav-menu a.active {
+  color: var(--accent-color);
+  border-bottom: 2px solid var(--accent-color);
 }
 
 /* 4. MAIN CONTENT AREA */
@@ -152,7 +157,7 @@ main > section:not(.hero-online) {
   right: -15px;
   width: 100px;
   height: 100px;
-  background-color: #ffb81c;
+  background-color: var(--accent-color);
   border-radius: 15px;
   z-index: 1;
   opacity: 0.3;
@@ -169,7 +174,7 @@ footer {
 }
 
 footer a:hover {
-  color: #ffb81c !important;
+  color: var(--accent-color) !important;
 }
 
 .footer-terms-link {
@@ -196,7 +201,7 @@ footer a:hover {
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  border-top: 5px solid #ffb81c;
+  border-top: 5px solid var(--accent-color);
   margin: 0;
 }
 
@@ -215,10 +220,10 @@ footer a:hover {
 }
 
 .valori-sectiune {
-  background-color: #fcfaf2;
+  background-color: var(--bg-color);
   padding: 60px 20px;
   margin: 40px 0;
-  border-left: 10px solid #ffb81c;
+  border-left: 10px solid var(--accent-color);
   border-radius: 0 20px 20px 0;
 }
 
@@ -231,7 +236,7 @@ footer a:hover {
 }
 .valori-icon {
   font-size: 4rem;
-  background: #1a4a7a;
+  background: var(--primary-color);
   width: 120px;
   height: 120px;
   display: flex;
@@ -241,13 +246,13 @@ footer a:hover {
 }
 
 .valori-text h2 {
-  color: #1a4a7a;
+  color: var(--primary-color);
   margin-bottom: 20px;
 }
 .highlight-p {
   font-weight: 600;
-  color: #1a4a7a !important;
-  border-top: 2px solid #ffb81c;
+  color: var(--primary-color) !important;
+  border-top: 2px solid var(--accent-color);
   padding-top: 15px;
   display: inline-block;
 }
@@ -321,7 +326,7 @@ footer a:hover {
   text-transform: uppercase;
   letter-spacing: 1px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
-  color: #ffffff;
+  color: var(--white);
 }
 
 .hero-content p {
@@ -384,7 +389,7 @@ footer a:hover {
     height: 300px;
   }
   #map-section {
-    border-top-color: #b03a2e;
+    border-top-color: var(--secondary-color);
     padding: 1rem;
   }
 
@@ -394,7 +399,7 @@ footer a:hover {
   }
   .valori-sectiune {
     border-left: none;
-    border-top: 10px solid #ffb81c;
+    border-top: 10px solid var(--accent-color);
     border-radius: 20px;
   }
 

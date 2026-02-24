@@ -1,5 +1,17 @@
 /* 1. LAYOUT & STICKY FOOTER LOGIC */
 
+:root {
+  --primary-color: #1a4a7a;
+  --secondary-color: #b03a2e;
+  --accent-color: #ffb81c;
+  --bg-color: #fcfaf2;
+  --text-color: #333333;
+  --text-light: #555555;
+  --white: #ffffff;
+  --success-color: #25d366;
+  --gradient-red: linear-gradient(135deg, #b03a2e 0%, #d34536 100%);
+}
+
 /* Hide scrollbar for Chrome, Safari and Edge on Desktop */
 ::-webkit-scrollbar {
   display: none;
@@ -9,6 +21,7 @@
 html {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+  scroll-behavior: smooth;
 }
 
 html,
@@ -18,8 +31,8 @@ body {
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #fcfaf2;
-  color: #333333; /* Dark Gray for main body text */
+  background-color: var(--bg-color);
+  color: var(--text-color); /* Dark Gray for main body text */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -50,12 +63,12 @@ h1 {
   letter-spacing: 1px;
   text-transform: uppercase;
   font-size: 1.8rem;
-  color: #1a4a7a;
+  color: var(--primary-color);
 }
 
 /* Base section style */
 section {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.95);
   margin-bottom: 2rem;
   padding: 2rem;
   border-radius: 12px;
@@ -64,15 +77,15 @@ section {
 }
 
 section:nth-of-type(even) {
-  border-top-color: #b03a2e;
+  border-top-color: var(--secondary-color);
 }
 
 section:nth-of-type(odd) {
-  border-top-color: #ffb81c;
+  border-top-color: var(--accent-color);
 }
 
 section h2 {
-  color: #333333;
+  color: var(--text-color);
   margin-top: 0;
   margin-bottom: 1.5rem;
 }
