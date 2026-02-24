@@ -235,6 +235,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  const ctaProfesoriCursuri = document.getElementById("cta-profesori");
+  if (ctaProfesoriCursuri) {
+    ctaProfesoriCursuri.addEventListener("click", () => {
+      window.location.href = "profesori.html";
+    });
+  }
+
   // --- LOGICĂ BACK TO TOP ---
   const backToTopBtn = document.getElementById("back-to-top");
 
