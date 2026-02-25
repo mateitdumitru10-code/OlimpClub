@@ -158,7 +158,8 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     if (nextBtn) {
-      nextBtn.addEventListener("click", () => {
+      nextBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
         let step = getStep();
         let nextIndex = currentSlideIndex + step;
         if (nextIndex >= slides.length) nextIndex = 0;
@@ -167,7 +168,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (prevBtn) {
-      prevBtn.addEventListener("click", () => {
+      prevBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
         let step = getStep();
         let prevIndex = currentSlideIndex - step;
         if (prevIndex < 0)
