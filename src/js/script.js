@@ -271,6 +271,25 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", () => {
       const profName = button.getAttribute("data-prof");
       targetProfSpan.textContent = profName;
+
+      const courseTypeSelect = document.getElementById("course_type");
+      const groupOption = courseTypeSelect.querySelector(
+        'option[value="Grup"]',
+      );
+      const individualOption = courseTypeSelect.querySelector(
+        'option[value="Individual"]',
+      );
+
+      groupOption.disabled = false;
+      individualOption.disabled = false;
+
+      if (profName === "Matei Dumitru") {
+        individualOption.disabled = true;
+        courseTypeSelect.value = "Grup";
+      } else {
+        courseTypeSelect.value = "Individual";
+      }
+
       modal.style.display = "block";
     });
   });
@@ -293,6 +312,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const nume = document.getElementById("student_name").value;
     const scop = document.getElementById("student_scope").value;
+    const tip = document.getElementById("course_type").value;
     const prof = targetProfSpan.textContent;
 
     const phoneNumbers = {
@@ -325,7 +345,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((response) => {
         if (response.ok) {
           // 2. Dacă trimiterea a reușit, deschidem WhatsApp
-          const mesaj = `Bună ziua! Sunt ${nume}. Doresc să rezerv o ședință cu profesorul ${prof}. Scop: ${scop}`;
+          const mesaj = `Bună ziua! Sunt ${nume}. Doresc să rezerv o ședință (${tip}) cu profesorul ${prof}. Scop: ${scop}`;
           const phoneNumber = phoneNumbers[prof] || "40771059496";
           const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(mesaj)}`;
 
