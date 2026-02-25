@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
       submitButton.textContent = "Se trimite...";
 
       try {
-        const response = await fetch(contactForm.action, {
+        const response = await fetch("https://formspree.io/f/xbdawjzr", {
           method: contactForm.method,
           body: formData,
           headers: {
@@ -335,7 +335,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // 1. Trimitem datele către Formspree
-    fetch("https://formspree.io/f/xdazelrd", {
+    fetch("https://formspree.io/f/mnjbwqgq", {
       method: "POST",
       body: formData,
       headers: {
