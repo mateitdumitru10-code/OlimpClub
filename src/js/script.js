@@ -204,19 +204,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "prev-prof-slide",
   );
 
-  // --- Accordion Logic ---
-  const cursuriList = document.querySelectorAll(".curs-tip");
-  if (cursuriList.length > 0) {
-    cursuriList.forEach((curs) => {
-      curs.addEventListener("click", () => {
-        cursuriList.forEach((c) => {
-          if (c !== curs) c.classList.remove("active");
-        });
-        curs.classList.toggle("active");
-      });
-    });
-  }
-
   // --- Redirecționări ---
   const ctaCursuri = document.getElementById("cta-cursuri");
   if (ctaCursuri) {

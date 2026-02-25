@@ -94,34 +94,6 @@ body:has(#profesori-preview) section:first-of-type {
   margin-top: 0;
 }
 
-.curs-detalii {
-  max-height: 0;
-  overflow: hidden;
-  transition:
-    max-height 0s ease-out,
-    padding 0.2s ease;
-  opacity: 0;
-}
-
-.curs-tip.active .curs-detalii {
-  max-height: 500px;
-  opacity: 1;
-  padding-top: 10px;
-  border-top: 1px dashed #ddd;
-  margin-top: 10px;
-}
-
-.curs-tip h3::after {
-  content: " ▼";
-  font-size: 0.8rem;
-  transition: transform 0.3s ease;
-  display: inline-block;
-}
-
-.curs-tip.active h3::after {
-  transform: rotate(180deg);
-}
-
 .curs-image-wrapper {
   width: 100%;
   margin: 1rem 0;
